@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import Home from '../views/Home.vue'
 
 import Cats from '../views/Cats.vue'
 import Dogs from '../views/Dogs.vue'
-import Pets from '../views/Pets.vue'
+import Pet from '../views/Pet.vue'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
 const routes = [
   {
@@ -27,11 +27,11 @@ const routes = [
   {
     path: '/Pet/:id',
     name: 'Pet',
-    component: Pets
+    component: Pet
   }
 ]
 
-const router = new VueRouter({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
