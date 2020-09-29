@@ -1,14 +1,19 @@
 <template>
   <div>
-    <h1>The Dogs</h1>
-    <b-table striped hover :items="dogs" :fields="fields"></b-table>
+    <PetTable
+      species="dogs"
+      :pets="dogs"
+    />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-
+import PetTable from '@/components/PetTable.vue'
 export default {
+  components: {
+    PetTable
+  },
   data () {
     return {}
   },
