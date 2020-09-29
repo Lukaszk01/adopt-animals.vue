@@ -4,15 +4,12 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/Cats">Cats</router-link>|
       <router-link to="/Dogs">Dogs</router-link>|
-
     </div>
     <b-container>
       <router-view/>
     </b-container>
-
   </div>
 </template>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
