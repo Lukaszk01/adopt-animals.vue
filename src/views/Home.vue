@@ -1,8 +1,13 @@
 <template>
-  <div class="home">
+  <div class="home-view-container">
   <h1>Adopt your mates</h1>
-  <button @click="togglePetForm" class="btn btn-primary">Add New Mate</button>
-
+  <h5>Total no. of Mates ready for Adoption: {{ animalsCount }}</h5>  <button @click="togglePetForm" class="btn btn-primary">Add New Mate</button>
+  <h3>
+        <font-awesome-icon icon="cat"/>
+        {{ getAllCats.length }} +
+        <font-awesome-icon icon="dog"/>
+        {{ getAllDogs.length }}
+      </h3>
     <b-form @submit.prevent="handleSubmit" v-if="showPetForm">
       <b-form-group id="exampleInputGroup2" label="Pet's Name:" label-for="exampleInput2">
         <b-form-input
@@ -33,7 +38,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 // @ is an alias to /src
 
@@ -48,6 +53,13 @@ export default {
         species: null
       }
     }
+  },
+  computed: {
+    ...mapGetters([
+      'animalsCount'
+      // 'getAllCats',
+      // 'getAllDogs'
+    ])
   },
   methods: {
     ...mapActions([
