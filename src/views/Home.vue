@@ -1,35 +1,29 @@
 <template>
   <div class="home">
   <h1>Adopt your mates</h1>
-  <button @click="togglePetForm" class="btn btn-primary">Add new animal</button>
+  <button @click="togglePetForm" class="btn btn-primary">Add New Mate</button>
 
-    <b-form @submit.prevent ="handleSubmit"  v-if="showPetForm">
-      <b-form-group id="input-group-2" label="Animal Name:" label-for="input-2">
+    <b-form @submit.prevent="handleSubmit" v-if="showPetForm">
+      <b-form-group id="exampleInputGroup2" label="Pet's Name:" label-for="exampleInput2">
         <b-form-input
-          id="input-2"
+          id="exampleInput2"
+          type="text"
           v-model="formData.name"
           required
-          placeholder="Enter name"
-        ></b-form-input>
+          placeholder="Enter name" />
       </b-form-group>
 
-      <b-form-group id="input-group-3" label="Species:" label-for="input-3">
-        <b-form-select
-          id="input-3"
-          v-model="formData.species"
-          :options="['cats', 'dogs']"
-          required
-        ></b-form-select>
+     <b-form-group id="exampleInputGroup3" label="Species:" label-for="exampleInput3">
+        <b-form-select id="exampleInput3" :options="['cats', 'dogs']" required v-model="formData.species" />
       </b-form-group>
 
-          <b-form-group id="input-group-2" label="Animal Age:" label-for="input-2">
+      <b-form-group id="exampleInputGroup2" label="Pet's Age:" label-for="exampleInput2">
         <b-form-input
-          id="input-2"
-          v-model="formData.age"
+          id="exampleInput2"
           type="number"
+          v-model="formData.age"
           required
-          placeholder="Enter age"
-        ></b-form-input>
+          placeholder="Enter age" />
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
@@ -39,7 +33,8 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
+
 // @ is an alias to /src
 
 export default {
@@ -54,25 +49,28 @@ export default {
       }
     }
   },
-  method: {
-    mapActions([
+  methods: {
+    ...mapActions([
       'addPet'
-      ]),
+    ]),
     togglePetForm () {
       this.showPetForm = !this.showPetForm
     },
     handleSubmit () {
-      const { spacies, age, name } = this.formData
+      const { species, age, name } = this.formData
       const payload = {
         species,
-        pets: {
+        pet: {
           name,
           age
         }
-
       }
       this.addPet(payload)
-
+      this.formData = {
+        name: '',
+        age: 0,
+        spaces: null
+      }
     }
   }
 }
