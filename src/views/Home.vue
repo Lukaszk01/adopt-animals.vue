@@ -1,13 +1,16 @@
+
 <template>
   <div class="home-view-container">
-  <h1>Adopt your mates</h1>
-  <h5>Total no. of Mates ready for Adoption: {{ animalsCount }}</h5>  <button @click="togglePetForm" class="btn btn-primary">Add New Mate</button>
-  <h3>
+    <h1>Adopt a new best friend.</h1>
+   <h5>Total no. of Animals ready for Adoption: {{ animalsCount }}</h5>
+      <h3>
         <font-awesome-icon icon="cat"/>
         {{ getAllCats.length }} +
         <font-awesome-icon icon="dog"/>
         {{ getAllDogs.length }}
       </h3>
+    <button @click="togglePetForm" class="btn btn-primary">Add New Pet</button>
+
     <b-form @submit.prevent="handleSubmit" v-if="showPetForm">
       <b-form-group id="exampleInputGroup2" label="Pet's Name:" label-for="exampleInput2">
         <b-form-input
@@ -18,7 +21,7 @@
           placeholder="Enter name" />
       </b-form-group>
 
-     <b-form-group id="exampleInputGroup3" label="Species:" label-for="exampleInput3">
+      <b-form-group id="exampleInputGroup3" label="Species:" label-for="exampleInput3">
         <b-form-select id="exampleInput3" :options="['cats', 'dogs']" required v-model="formData.species" />
       </b-form-group>
 
@@ -39,9 +42,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-
-// @ is an alias to /src
-
 export default {
   name: 'home',
   data () {
@@ -56,9 +56,9 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'animalsCount'
-      // 'getAllCats',
-      // 'getAllDogs'
+      'animalsCount',
+      'getAllCats',
+      'getAllDogs'
     ])
   },
   methods: {
@@ -81,7 +81,7 @@ export default {
       this.formData = {
         name: '',
         age: 0,
-        spaces: null
+        species: null
       }
     }
   }
