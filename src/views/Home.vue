@@ -1,7 +1,7 @@
 <template>
   <div class="home">
   <h1>Adopt your mates</h1>
-  <button class="btn btin-primary">Add new animal</button>
+  <button @click="togglePetForm" class="btn btn-primary">Add new animal</button>
   <b-form @submit="handleSubmit"  v-if="showPetForm">
 
       <b-form-group id="input-group-2" label="Animal Name:" label-for="input-2">
@@ -45,7 +45,7 @@ export default {
   name: 'Home',
   data () {
     return {
-      showPetForm: false,
+      showPetForm: true,
       formData: {
         name: '',
         age: 0,
