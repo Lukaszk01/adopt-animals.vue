@@ -42,5 +42,16 @@ export default [
     weight: 9,
     location: 'threed',
     notes: 'Super friendly'
+  },
+  {
+    name: 'bomby',
+    breed: '-',
+    species: 'cat',
+    gender: 'female',
+    age: 4,
+    color: 'gray',
+    weight: 9,
+    location: 'threed',
+    notes: 'Friendly'
   }
 ]
